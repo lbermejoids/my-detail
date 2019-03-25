@@ -1,0 +1,91 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/elements/dom-if.html">
+
+<dom-module id="my-detail">
+  <template>
+
+  <template is="dom-if" if="{{isListVisible}}">
+     <style>
+      :host {
+        display: block;
+      }
+    </style>
+     <section id="secc-lista">
+      <h2>Lista de elementos</h2>  
+      <ul>
+          <li>Elemento 1</li>
+          <li>Elemento 2</li>
+          <li>Elemento 3</li>
+          <li>Elemento 4</li>
+          <li>Elemento 5</li>
+      </ul>
+    </section>
+  </template>
+  <template is="dom-if" if="{{isTableVisible}}">
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <section id="secc-tabla">
+      <h2>Tabla de elementos</h2>  
+      <table>
+         <thead>
+           <tr>
+              <th>Columna 1</th>
+              <th>Columna 2</th>
+              <th>Columna 3</th>
+           </tr>
+         </thead> 
+         <tbody>
+           <tr>
+              <td>Dato [1][1]</td>
+              <td>Dato [1][2]</td>
+              <td>Dato [1][3]</td>
+           </tr>
+           <tr>
+              <td>Dato [2][1]</td>
+              <td>Dato [2][2]</td>
+              <td>Dato [2][3]</td>
+           </tr>
+           <tr>
+              <td>Dato [3][1]</td>
+              <td>Dato [3][2]</td>
+              <td>Dato [3][3]</td>
+           </tr>
+         </tbody>
+
+      </table>
+
+    </section>
+  </template>
+  </template>
+  <script>
+    /**
+     * `my-detail`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MyDetail extends Polymer.Element {
+      static get is() { return 'my-detail'; }
+      static get properties() {
+        return {
+          isListVisible: {
+            type: Boolean,
+            value: true
+          }, 
+
+          isTableVisible: {
+            type: Boolean,
+            value: true
+          }
+        };
+      }
+    }
+
+    window.customElements.define(MyDetail.is, MyDetail);
+  </script>
+</dom-module>
