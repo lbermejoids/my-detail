@@ -81,13 +81,19 @@
         }
       };
 
-      _showTable(){
+      ready(){
+        super.ready();
+        this.addEventListener('show-list', (e) => this.showTableHandle(e) );
+        this.addEventListener('show-table', (e) => this.showListHandle(e) );
+      }
+
+      showTableHandle(){
           console.log('_showTable')
           this.tableVisible=true;
           this.listVisible=false;
       }
 
-      _showList(){
+      showListHandle(){
           console.log('_showList')
           this.listVisible=true;
           this.tableVisible=false;
