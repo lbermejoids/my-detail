@@ -3,62 +3,56 @@
 
 <dom-module id="my-detail">
   <template>
-
-  <template is="dom-if" if="{{isListVisible}}">
      <style>
       :host {
         display: block;
       }
     </style>
-     <section id="secc-lista">
-      <h2>Lista de elementos</h2>  
-      <ul>
-          <li>Elemento 1</li>
-          <li>Elemento 2</li>
-          <li>Elemento 3</li>
-          <li>Elemento 4</li>
-          <li>Elemento 5</li>
-      </ul>
-    </section>
-  </template>
-  <template is="dom-if" if="{{isTableVisible}}">
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <section id="secc-tabla">
-      <h2>Tabla de elementos</h2>  
-      <table>
-         <thead>
-           <tr>
-              <th>Columna 1</th>
-              <th>Columna 2</th>
-              <th>Columna 3</th>
-           </tr>
-         </thead> 
-         <tbody>
-           <tr>
-              <td>Dato [1][1]</td>
-              <td>Dato [1][2]</td>
-              <td>Dato [1][3]</td>
-           </tr>
-           <tr>
-              <td>Dato [2][1]</td>
-              <td>Dato [2][2]</td>
-              <td>Dato [2][3]</td>
-           </tr>
-           <tr>
-              <td>Dato [3][1]</td>
-              <td>Dato [3][2]</td>
-              <td>Dato [3][3]</td>
-           </tr>
-         </tbody>
 
-      </table>
+    <template is="dom-if" if="{{listVisible}}">
+       <section id="secc-lista">
+        <h2>Lista de elementos </h2>  
+        <ul>
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+            <li>Elemento 3</li>
+            <li>Elemento 4</li>
+            <li>Elemento 5</li>
+        </ul>
+      </section>
+    </template>
+    <template is="dom-if" if="{{tableVisible}}">
+      <section id="secc-tabla">
+        <h2>Tabla de elementos </h2>  
+        <table>
+           <thead>
+             <tr>
+                <th>Columna 1</th>
+                <th>Columna 2</th>
+                <th>Columna 3</th>
+             </tr>
+           </thead> 
+           <tbody>
+             <tr>
+                <td>Dato [1][1]</td>
+                <td>Dato [1][2]</td>
+                <td>Dato [1][3]</td>
+             </tr>
+             <tr>
+                <td>Dato [2][1]</td>
+                <td>Dato [2][2]</td>
+                <td>Dato [2][3]</td>
+             </tr>
+             <tr>
+                <td>Dato [3][1]</td>
+                <td>Dato [3][2]</td>
+                <td>Dato [3][3]</td>
+             </tr>
+           </tbody>
+        </table>
 
-    </section>
-  </template>
+      </section>
+    </template>
   </template>
   <script>
     /**
@@ -73,17 +67,32 @@
       static get is() { return 'my-detail'; }
       static get properties() {
         return {
-          isListVisible: {
+          listVisible: Boolean,
+          tableVisible: Boolean
+          /*
+          listVisible: {
+            type: Boolean, 
+            value: true
+          },  
+          tableVisible: {
             type: Boolean,
             value: true
-          }, 
+          }*/
+        }
+      };
 
-          isTableVisible: {
-            type: Boolean,
-            value: true
-          }
-        };
+      _showTable(){
+          console.log('_showTable')
+          this.tableVisible=true;
+          this.listVisible=false;
       }
+
+      _showList(){
+          console.log('_showList')
+          this.listVisible=true;
+          this.tableVisible=false;
+      }
+
     }
 
     window.customElements.define(MyDetail.is, MyDetail);
