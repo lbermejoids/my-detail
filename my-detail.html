@@ -83,18 +83,18 @@
 
       ready(){
         super.ready();
-        this.addEventListener('show-list', (e) => this.showTableHandle(e) );
-        this.addEventListener('show-table', (e) => this.showListHandle(e) );
+        this.addEventListener('show-list', (e) => this.showListHandle(e) );
+        this.addEventListener('show-table', (e) => this.showTableHandle(e) );
       }
 
       showTableHandle(){
-          console.log('_showTable')
+          console.log('_showTable');
           this.tableVisible=true;
           this.listVisible=false;
       }
 
       showListHandle(){
-          console.log('_showList')
+          console.log('_showList');
           this.listVisible=true;
           this.tableVisible=false;
       }
